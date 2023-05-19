@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>爱寇寇的Xin</title>
+  <style>
+    body {
+      background-color: #fde5e5;
+      font-family: Arial, sans-serif;
+    }
+    
+    
+    div#heart {
+      position: relative;  
+      top: 200px;
+      left: 40%;
+      width: 300px;
+      height: 300px;
+      background-color: tomato;
+      transform: rotate(-45deg);
+    }
+
+    div#heart:before,
+    div#heart:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 300px;
+      height: 300px;
+      background-color: tomato;
+      border-radius: 50%;
+    }
+
+    div#heart:before {
+      top: -150px;
+    }
+
+    div#heart:after {
+      left: 150px;
+    }
+   
+
+    h2 {
+          font-size: 220%;
+          font-weight: 400;
+          color: yellow;
+      }
+      
+    .content {
+        position: absolute;
+        width: 100%;
+        top: 40%;
+        transform: translate(0, -50%);
+        text-align: center;
+    }
+    
+    .timer {
+        font-size: 180%;
+        line-height: 1.5;
+        margin: 1em 0;
+    }
+    
+    .timer b {
+        color: rgb(91, 91, 249); 
+    }
+    div .timer{
+      color: lightblue;
+    }
+    div#signature {
+      position: fixed;
+      bottom: 10%;
+      right: 10%;
+      font-size: 22px;
+      font-family:Verdana, Geneva, Tahoma, sans-serif;
+      color: skyblue;
+      background-color: transparent;
+      padding: 20px;
+      border-style:solid;
+      border-width:5px;
+      border-radius: 50%;
+      border-color:skyblue;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    #further {
+    background-image: linear-gradient(to top, #fdcbf1 0%, #fdcbf1 1%, #e6dee9 100%);
+    border: none;
+    color: #161616;
+    text-align: center;
+    padding-left: 16px;
+    padding-right: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 60px;
+    text-decoration: none;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font: inherit;
+    vertical-align: baseline;
+    letter-spacing: .3px;
+    direction: ltr;
+    }
+    span {
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 45px;
+    }
+    a:-webkit-any-link {
+    cursor: pointer;
+}
+  audio {
+          position: fixed;
+          top:20px;
+      }
+    
+  </style>
+
+</head>
+<body>
+  <audio src="music/The physics of love.MP3" controls autoplay loop></audio>
+    <a href="surprise.html" id="further"><span>点击进入</span></a>
+  <div id="main">
+    <div id="heart"></div>
+      <div class="content">
+        <h2>和寇寇在一起</h2>
+        <div class="timer">
+            <b id="d"></b> 天 <b id="h"></b> 小时 <b id="m"></b> 分钟 <b id="s"></b> 秒
+        </div>
+    </div>
+      <div id="signature">
+          <p>新</p>
+    </div>
+      
+  </div>
+</a>
+  <script>
+    function show_date_time() {
+        window.setTimeout("show_date_time()", 1000);
+        BirthDay = new Date("12/16/2022 00:00:00");//这个日期是可以修改的
+        today = new Date();
+        timeold = (today.getTime() - BirthDay.getTime());
+        sectimeold = timeold / 1000
+        secondsold = Math.floor(sectimeold);
+        msPerDay = 24 * 60 * 60 * 1000
+        e_daysold = timeold / msPerDay
+        daysold = Math.floor(e_daysold);
+        e_hrsold = (e_daysold - daysold) * 24;
+        hrsold = Math.floor(e_hrsold);
+        e_minsold = (e_hrsold - hrsold) * 60;
+        minsold = Math.floor((e_hrsold - hrsold) * 60);
+        seconds = Math.floor((e_minsold - minsold) * 60);
+        document.getElementById('d').innerHTML = daysold;
+        document.getElementById('h').innerHTML = hrsold;
+        document.getElementById('m').innerHTML = minsold;
+        document.getElementById('s').innerHTML = seconds;
+    }
+
+    show_date_time();
+  </script>
+</body>
+</html>

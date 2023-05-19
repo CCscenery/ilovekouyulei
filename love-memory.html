@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      margin: 20px;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    
+    .image-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 80%;
+      max-width: 800px;
+    }
+    
+    .image-container img {
+      width: 30%;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .modal {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .modal-content {
+      background-color: #fff;
+      padding: 20px;
+      border: 1px solid #ccc;
+      width: 300px;
+      text-align: center;
+    }
+
+    .modal h2 {
+      margin-top: 0;
+    }
+
+    .modal input {
+      margin-bottom: 10px;
+    }
+
+    .modal button {
+      padding: 5px 10px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+    audio {
+        position: fixed;
+        top:20px;
+    }
+  </style>
+  <script>
+    window.addEventListener("DOMContentLoaded", function() {
+      var passwordModal = document.getElementById("password-modal");
+      var passwordInput = document.getElementById("password-input");
+      var passwordSubmit = document.getElementById("password-submit");
+      var mainPage = document.getElementById("main");
+      
+      mainPage.style.display = "none";
+      passwordModal.style.display = "flex";
+      
+      passwordSubmit.addEventListener("click", function() {
+        var password = passwordInput.value;
+        if (password === "kouyulei") {
+          passwordModal.style.display = "none";
+          mainPage.style.display = "flex";
+        } else {
+          alert("密码错误，请重新输入。");
+        }
+      });
+      
+      passwordInput.addEventListener("keyup", function(event) {
+        if (event.keyCode === 13) {
+          event.preventDefault();
+          passwordSubmit.click();
+        }
+      });
+    });
+  </script>
+</head>
+<body>
+  <div id="password-modal" class="modal">
+    <div class="modal-content">
+      <h2>请输入密码</h2>
+      <input type="password" id="password-input" placeholder="密码">
+      <button id="password-submit">提交</button>
+    </div>
+  </div>
+  <audio src="music/Beautiful(Instrumental)-Crush.320.mp3" controls autoplay loop></audio>
+  <div class="image-container" id="main">
+    <img src="image/pic1.jpg" alt="Image 1">
+    <img src="image/pic2.jpg" alt="Image 2">
+    <img src="image/pic3.jpg" alt="Image 3">
+  </div>
+  <script src="js/sakura.js"></script>
+</body>
+</html>
