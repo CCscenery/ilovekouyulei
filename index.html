@@ -88,20 +88,22 @@
       color: rgb(91, 91, 249); 
     }
 
-    div#signature {
+    /* 右下角 Xin 图标 */
+    #signature {
       position: fixed;
       bottom: 10%;
       right: 10%;
       font-size: 22px;
-      font-family:Verdana, Geneva, Tahoma, sans-serif;
-      color: skyblue;
-      background-color: transparent;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      color: white;
+      background-color: tomato;
       padding: 20px;
-      border-style:solid;
-      border-width:5px;
       border-radius: 50%;
-      border-color:skyblue;
-      box-shadow: 0 0 20px rgba(135,206,250,0.6);
+      border: 3px solid white;
+      box-shadow: 0 0 15px rgba(255,99,71,0.7);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-align: center;
     }
 
     #further {
@@ -162,7 +164,7 @@
           <b id="d"></b> 天 <b id="h"></b> 小时 <b id="m"></b> 分钟 <b id="s"></b> 秒
       </div>
     </div>
-    <div id="signature">
+    <div id="signature",onclick="window.location.href='https://ccscenery.github.io/ilovekouyulei/love-memory.html'">
       <p>新</p>
     </div>
   </div>
