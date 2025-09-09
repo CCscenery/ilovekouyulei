@@ -1,184 +1,123 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">  
+  <meta charset="utf-8">
   <title>爱寇寇的Xin</title>
   <style>
     body {
-      background: linear-gradient(-45deg, #fde5e5, #ffd1d1, #ffb3c6, #ffccd5);
-      background-size: 400% 400%;
-      animation: bgFlow 12s ease infinite;
-      font-family: Arial, sans-serif;
-      overflow: hidden;
+      margin: 0;
+      padding: 0;
+      background: #fff0f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+      font-family: 'Arial', sans-serif;
     }
 
-    /* 背景缓慢流动动画 */
-    @keyframes bgFlow {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+    /* 大爱心容器 */
+    .heart {
+      position: relative;
+      width: 300px;
+      height: 270px;
+      background-color: #ff4d6d;
+      transform: rotate(-45deg);
+      animation: heartbeat 2s infinite;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 0 20px rgba(255, 77, 109, 0.6);
     }
 
-    /* 更自然的心形（使用 clip-path） */
-    #heart {
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
       width: 300px;
       height: 300px;
-      background: tomato;
-      clip-path: path("M150 270 L30 150 A60 60 0 1 1 150 90 A60 60 0 1 1 270 150 Z");
-      margin: 200px auto 0 auto;
-      animation: heartbeat 2s infinite ease-in-out;
+      background-color: #ff4d6d;
+      border-radius: 50%;
     }
 
-    /* 心跳动画 + 发光 */
+    .heart::before {
+      top: -150px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: 150px;
+      top: 0;
+    }
+
+    /* 心跳动画 */
     @keyframes heartbeat {
       0%, 100% {
-        transform: scale(1);
-        box-shadow: 0 0 15px rgba(255, 99, 71, 0.3); 
+        transform: scale(1) rotate(-45deg);
+        box-shadow: 0 0 20px rgba(255, 77, 109, 0.6);
       }
       25% {
-        transform: scale(1.05);
-        box-shadow: 0 0 25px rgba(255, 99, 71, 0.5); 
+        transform: scale(1.05) rotate(-45deg);
+        box-shadow: 0 0 30px rgba(255, 77, 109, 0.8);
       }
       50% {
-        transform: scale(1.1);
-        box-shadow: 0 0 40px rgba(255, 99, 71, 0.7); 
+        transform: scale(1.1) rotate(-45deg);
+        box-shadow: 0 0 40px rgba(255, 77, 109, 1);
       }
       75% {
-        transform: scale(1.05);
-        box-shadow: 0 0 25px rgba(255, 99, 71, 0.5); 
+        transform: scale(1.05) rotate(-45deg);
+        box-shadow: 0 0 30px rgba(255, 77, 109, 0.8);
       }
     }
 
-    h2 {
-      font-size: 220%;
-      font-weight: 400;
-      color: yellow;
-      text-shadow: 0 0 10px rgba(255,255,0,0.6);
-    }
-      
-    .content {
-      position: absolute;
-      width: 100%;
-      top: 40%;
-      transform: translateY(-50%);
-      text-align: center;
-    }
-    
-    .timer {
-      font-size: 180%;
-      line-height: 1.5;
-      margin: 1em 0;
-      color: lightblue;
-      text-shadow: 0 0 8px rgba(135,206,250,0.6);
-    }
-    
-    .timer b {
-      color: rgb(91, 91, 249); 
-    }
-
-    /* 右下角 Xin 图标 */
-    #signature {
-      position: fixed;
-      bottom: 10%;
-      right: 10%;
-      font-size: 22px;
-      font-family: Verdana, Geneva, Tahoma, sans-serif;
+    /* 文字放到心形中央 */
+    .heart-text {
+      position: relative;
+      transform: rotate(45deg); /* 把文字转正 */
       color: white;
-      background-color: tomato;
-      padding: 20px;
-      border-radius: 50%;
-      border: 3px solid white;
-      box-shadow: 0 0 15px rgba(255,99,71,0.7);
-      cursor: pointer;
-      transition: all 0.3s ease;
+      font-size: 24px;
+      font-weight: bold;
       text-align: center;
+      width: 80%;
+      line-height: 1.5;
+      z-index: 2;
     }
 
-    #signature:hover {
-      transform: scale(1.1);
-      box-shadow: 0 0 25px rgba(255,99,71,1);
-    }
-
-    #further {
-      background-image: linear-gradient(to top, #fdcbf1 0%, #e6dee9 100%);
-      border: none;
-      color: #161616;
-      text-align: center;
-      padding-left: 16px;
-      padding-right: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 16px;
-      font-weight: 600;
-      line-height: 60px;
-      text-decoration: none;
-      border-radius: 30px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      transition: all 0.3s ease;
-      width: 160px;
-      margin: 30px auto;
-    }
-
-    #further:hover {
-      transform: scale(1.05);
-      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
-    }
-
-    span {
-      font-size: 20px;
-      font-weight: 600;
-      line-height: 45px;
-    }
-
-    a:-webkit-any-link {
-      cursor: pointer;
-    }
-
-    audio {
+    /* 右下角Xin按钮 */
+    .xin-btn {
       position: fixed;
-      top:20px;
+      bottom: 20px;
+      right: 20px;
+      background: #ff4d6d;
+      color: white;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 18px;
+      font-weight: bold;
+      text-decoration: none;
+      box-shadow: 0 4px 12px rgba(255, 77, 109, 0.6);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .xin-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 16px rgba(255, 77, 109, 0.8);
     }
   </style>
 </head>
 <body>
-  <audio src="music/The physics of love.MP3" controls autoplay loop></audio>
-  <a href="surprise.html" id="further"><span>点击进入</span></a>
-  <div id="main">
-    <div id="heart"></div>
-    <div class="content">
-      <h2>和寇寇在一起</h2>
-      <div class="timer">
-          <b id="d"></b> 天 <b id="h"></b> 小时 <b id="m"></b> 分钟 <b id="s"></b> 秒
-      </div>
-    </div>
-    <!-- 点击 Xin 跳转 -->
-    <div id="signature" onclick="window.location.href='https://example.com'">
-      <p>Xin</p>
+  <!-- 爱心+文字 -->
+  <div class="heart">
+    <div class="heart-text">
+      爱寇寇的Xin ❤️<br>
     </div>
   </div>
-  <script>
-    function show_date_time() {
-        window.setTimeout("show_date_time()", 1000);
-        let BirthDay = new Date("12/16/2022 00:00:00");
-        let today = new Date();
-        let timeold = (today.getTime() - BirthDay.getTime());
-        let sectimeold = timeold / 1000
-        let secondsold = Math.floor(sectimeold);
-        let msPerDay = 24 * 60 * 60 * 1000
-        let e_daysold = timeold / msPerDay
-        let daysold = Math.floor(e_daysold);
-        let e_hrsold = (e_daysold - daysold) * 24;
-        let hrsold = Math.floor(e_hrsold);
-        let e_minsold = (e_hrsold - hrsold) * 60;
-        let minsold = Math.floor((e_hrsold - hrsold) * 60);
-        let seconds = Math.floor((e_minsold - minsold) * 60);
-        document.getElementById('d').innerHTML = daysold;
-        document.getElementById('h').innerHTML = hrsold;
-        document.getElementById('m').innerHTML = minsold;
-        document.getElementById('s').innerHTML = seconds;
-    }
-    show_date_time();
-  </script>
+
+  <!-- 跳转按钮 -->
+  <a href="https://example.com" class="xin-btn">Xin</a>
 </body>
 </html>
